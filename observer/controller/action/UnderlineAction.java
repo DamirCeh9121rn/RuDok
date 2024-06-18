@@ -1,0 +1,42 @@
+package controller.action;
+
+import controller.AbstractRudokAction;
+import view.dialog.EditTextSlotDialog;
+
+import javax.swing.*;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.Document;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+
+public class UnderlineAction extends AbstractRudokAction {
+    JDialog dialog;
+    public UnderlineAction(){
+        //putValue(SMALL_ICON, loadIcon("images/delete.png"));
+        putValue(NAME, "Underline");
+        putValue(SHORT_DESCRIPTION, "Underline");
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        SimpleAttributeSet attributeSet = new SimpleAttributeSet();
+        StyleConstants.setUnderline(attributeSet,true);
+        ((EditTextSlotDialog) dialog).getTextPane().setCharacterAttributes(attributeSet, true);
+
+        /*Document doc = ((EditTextSlotDialog) dialog).getTextPane().getStyledDocument();
+
+        try {
+            doc.insertString(doc.getLength(), ((EditTextSlotDialog) dialog).getTextPane().getSelectedText(),attributeSet);
+            doc.
+        }catch(BadLocationException u) {
+            u.printStackTrace();
+        }*/
+
+    }
+
+    public void setDialog(JDialog dialog) {
+        this.dialog = dialog;
+    }
+}
